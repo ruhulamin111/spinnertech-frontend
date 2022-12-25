@@ -6,44 +6,40 @@ const TableData = () => {
         fetch(`http://localhost:5000/project`)
             .then(res => res.json())
             .then(data => setProject(data))
-    }, [])
+    }, [project])
 
 
     return (
         <div>
-            <div className="overflow-x-auto">
-                <table className="table w-full">
-
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+            <div
+                className="overflow-x-auto mt-10 border"
+            >
+                <table
+                    className="table w-full"
+                >
+                    <thead >
+                        <tr className='border-b'>
+                            <th className='py-4 '>No</th>
+                            <th>Project name</th>
+                            <th>Project category</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-
-                        <tr>
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
+                        {
+                            project.map((item, index) => <tr
+                                key={item._id}
+                                className='text-center '
+                            >
+                                <td className='py-3'>{index + 1}</td>
+                                <td>{item.name}</td>
+                                <td>{item.category}</td>
+                                <td>Edit</td>
+                                <td>Remove</td>
+                            </tr>
+                            )
+                        }
                     </tbody>
                 </table>
             </div>
