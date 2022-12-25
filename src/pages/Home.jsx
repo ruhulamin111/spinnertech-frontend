@@ -1,4 +1,10 @@
+import { signOut } from 'firebase/auth'
 import React from 'react'
+import { FaHome, FaSignOutAlt } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import Table from '../components/Table'
+import TableData from '../components/TableData'
+import auth from '../firebase.init'
 
 const Home = () => {
 
@@ -6,21 +12,39 @@ const Home = () => {
         <div
             className='h-screen max-w-7xl md:w-10/12 mx-auto '
         >
-            {/* title part  */}
-            <div>
+            {/* simple navbar part  */}
+            <div className='flex justify-between items-center h-20 sticky top-0 text-xl'>
+                <p
+                    className='cursor-pointer'
+                >
+                    <Link to='/'>
+                        <FaHome />
+                    </Link>
+                </p>
+                <p
+                    className='cursor-pointer'
+                    onClick={() => signOut(auth)}
+                >
+                    <FaSignOutAlt />
+                </p>
+            </div>
+            {/* table part  */}
+            <div className='text-center'>
                 <h1
-                    className='text-2xl font-bold text-center py-5'
+                    className='text-5xl font-bold mb-5'
                 >
                     Spinner Tech
                 </h1>
+                <h2
+                    className='text-xl mb-5'
+                >
+                    Total project of 2022
+                </h2>
             </div>
-            {/* table part  */}
-            <div>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia libero minima ipsa dolorum nemo. Libero facere corrupti vitae in unde sit maxime illum velit eligendi repellat! Assumenda quae cupiditate praesentium?
+            {/* table component  */}
+            <Table />
+            <TableData />
 
-                </p>
-            </div>
         </div>
     )
 }
