@@ -1,4 +1,5 @@
 import React from 'react'
+import Signin from '../components/Signin'
 
 const Home = () => {
     return (
@@ -13,7 +14,7 @@ const Home = () => {
             </section>
             {/* form part  */}
             <section>
-
+                <Signin />
             </section>
         </div>
     )
