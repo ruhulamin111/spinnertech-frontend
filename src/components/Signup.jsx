@@ -4,11 +4,12 @@ import auth from '../firebase.init';
 import { useForm } from "react-hook-form";
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
-const Signin = () => {
+const Signup = () => {
     const [signInWithGoogle, gUser, gLoadding, gError] = useSignInWithGoogle(auth);
-    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate()
     const location = useLocation()
@@ -21,7 +22,7 @@ const Signin = () => {
         return <Loading></Loading>
     }
     const onSubmit = (data) => {
-        signInWithEmailAndPassword(data.email, data.password)
+        createUserWithEmailAndPassword(data.email, data.password)
     };
     if (user || gUser) {
         navigate(from, { replace: true })
@@ -38,7 +39,7 @@ const Signin = () => {
                 <h1
                     className='text-4xl font-bold mb-4'
                 >
-                    Sign in
+                    Sign up
                 </h1>
                 <h2
                     className='text-xl mb-10'
@@ -59,7 +60,7 @@ const Signin = () => {
                     <h2
                         className='text-lg text-center mb-5'
                     >
-                        Or sign in with
+                        Or sign up with
                     </h2>
                 </div>
                 {/* sign in form  */}
@@ -113,16 +114,16 @@ const Signin = () => {
                     </div>
                     <input
                         type='submit'
-                        value='Sign in'
+                        value='Sign up'
                         className="w-full mt-5 border rounded-full py-3 mb-5 cursor-pointer">
                     </input>
                     {userError}
                 </form>
                 {/* sign up page terminate  */}
                 <p className=' text-center flex justify-center gap-2'>
-                    Don't have an account?
+                    Already have an account?
                     <Link className='text-primary' to='/signup'>
-                        Create one
+                        Please sign in
                     </Link>
                 </p>
             </div>
@@ -130,4 +131,4 @@ const Signin = () => {
     );
 };
 
-export default Signin;
+export default Signup;
