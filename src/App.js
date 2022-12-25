@@ -6,6 +6,7 @@ import Signup from './components/Signup';
 import Home from './pages/Home';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import Edit from './components/Edit';
 
 function App() {
 
@@ -23,6 +24,10 @@ function App() {
         <Route
           path='/signup'
           element={<Signup />}
+        />
+        <Route
+          path='/edit/:id'
+          element={<Edit />}
         />
 
       </Routes>
