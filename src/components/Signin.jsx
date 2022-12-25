@@ -36,26 +36,26 @@ const Signin = () => {
                 className='text-center'
             >
                 <h1
-                    className='text-4xl font-bold mb-5'
+                    className='text-4xl font-bold mb-4'
                 >
                     Sign in
                 </h1>
                 <h2
-                    className='text-xl mb-16'
+                    className='text-xl mb-10'
                 >
                     Please stay connect with us
                 </h2>
             </div>
             {/* sign in title  */}
-            <div className="card-body  ">
+            <div className="card-body md:w-6/12 ">
                 <h2
                     onClick={() => signInWithGoogle()}
-                    className='border rounded-full flex justify-center items-center gap-5  py-2  cursor-pointer mb-5'
+                    className='border rounded-full flex justify-center items-center gap-5  py-3  cursor-pointer mb-5'
                 >
                     <FaGoogle />
                     Google
                 </h2>
-                <div className="divider ">
+                <div className=" ">
                     <h2
                         className='text-lg text-center mb-5'
                     >
@@ -69,21 +69,23 @@ const Signin = () => {
                 >
                     <div className="form-control ">
                         <label
-                            className="label mb-10 py-2 text-lg "
+                            className="label "
                         >
                             My email address is
                         </label>
                         <input
                             type="text"
                             placeholder="Your email address"
-                            className="input input-bordered w-full py-3 px-4 my-2 rounded-full "
+                            className="input input-bordered w-full py-3 px-5 mt-2 mb-6 rounded-full "
                             {...register("email", {
                                 required: { value: true, message: 'Email address is required' },
                                 pattern: { value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/, message: 'Enter a valid email' }
                             })}
                         />
                         <label className="label ">
+                            {/* require error  */}
                             {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 text-sm">{errors.email.message}</span>}
+                            {/* pattern error  */}
                             {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500 text-sm">{errors.email.message}</span>}
                         </label>
                     </div>
@@ -96,25 +98,28 @@ const Signin = () => {
                         <input
                             type="password"
                             placeholder="Your password"
-                            className="input input-bordered w-full py-3 px-4 my-2 rounded-full "
+                            className="input input-bordered w-full py-3 px-4 mt-2 mb-6 rounded-full "
                             {...register("password", {
                                 required: { value: true, message: 'Password is required' },
                                 pattern: { value: /(?=.*[!@#$%^&*])/, message: 'Enter at least one speacial character' }
                             })}
                         />
                         <label className="label">
+                            {/* require error  */}
                             {errors.password?.type === 'required' && <span className="label-text-alt text-red-500 text-sm">{errors.password.message}</span>}
+                            {/* pattern error  */}
                             {errors.password?.type === 'pattern' && <span className="label-text-alt text-red-500 text-sm">{errors.password.message}</span>}
                         </label>
                     </div>
                     <input
                         type='submit'
                         value='Sign in'
-                        className="bg-green-500 z-100 w-full text-white mt-5">
+                        className="w-full mt-5 border rounded-full py-3 mb-5">
                     </input>
                     {userError}
                 </form>
-                <p className='pt-4'>
+                {/* sign up page terminate  */}
+                <p className=' text-center flex justify-center gap-2'>
                     Don't have an account?
                     <Link className='text-primary' to='/signup'>
                         Create one
