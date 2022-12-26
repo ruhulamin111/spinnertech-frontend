@@ -2,6 +2,7 @@ import React from 'react'
 import { toast } from 'react-toastify';
 
 const Table = () => {
+    // post project to databse 
     const handleSubmit = (event) => {
         event.preventDefault()
         const name = event.target.name.value;
@@ -10,7 +11,7 @@ const Table = () => {
             name: name,
             category: category
         }
-        fetch(`http://localhost:5000/project`, {
+        fetch(`https://spinner-tech.onrender.com/project`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -32,10 +33,10 @@ const Table = () => {
         <div>
             <form
                 onSubmit={handleSubmit}
-                className='flex justify-between mt-10 items-center'
+                className='md:flex justify-between mt-10 items-center'
             >
                 <div
-                    className="form-control "
+                    className="form-control mb-5 md:mb-0"
                 >
                     <label
                         className="input-group input-group-md flex items-center justify-center gap-2"
@@ -45,12 +46,12 @@ const Table = () => {
                             name='name'
                             type="text"
                             placeholder="Project name"
-                            className="input input-bordered input-md py-2 px-5 rounded-full text-black"
+                            className="input input-bordered input-md py-2 px-5 rounded-full text-black "
                         />
                     </label>
                 </div>
                 <div
-                    className="form-control "
+                    className="form-control mb-5 md:mb-0"
                 >
                     <label
                         className="input-group input-group-md flex items-center justify-center gap-2"
@@ -70,7 +71,6 @@ const Table = () => {
                     <input
                         type="submit"
                         value='Add project'
-
                         className="input input-bordered input-md py-2 px-5 rounded-full border cursor-pointer"
                     />
                 </div>

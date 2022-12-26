@@ -10,10 +10,12 @@ const Home = () => {
 
     return (
         <div
-            className='h-screen max-w-7xl md:w-10/12 mx-auto '
+            className='max-w-7xl md:w-10/12 mx-auto '
         >
             {/* simple navbar part  */}
-            <div className='flex justify-between items-center h-20 sticky top-0 text-xl'>
+            <div
+                className='flex justify-between items-center h-20 sticky top-0 text-xl'
+            >
                 <p
                     className='cursor-pointer'
                 >

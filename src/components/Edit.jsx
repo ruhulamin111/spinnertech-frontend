@@ -14,7 +14,7 @@ const Edit = () => {
             name: name,
             category: category
         }
-        fetch(`http://localhost:5000/project/${id}`, {
+        fetch(`https://spinner-tech.onrender.com/project/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
